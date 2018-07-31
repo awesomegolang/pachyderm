@@ -224,7 +224,8 @@ func doSidecarMode(appEnvObj interface{}) error {
 				ppsclient.RegisterAPIServer(s, ppsAPIServer)
 
 				authAPIServer, err := authserver.NewAuthServer(
-					address, etcdAddress, path.Join(appEnv.EtcdPrefix, appEnv.AuthEtcdPrefix))
+					address, etcdAddress, path.Join(appEnv.EtcdPrefix, appEnv.AuthEtcdPrefix),
+					false)
 				if err != nil {
 					return err
 				}
@@ -401,7 +402,8 @@ func doFullMode(appEnvObj interface{}) error {
 					}
 
 					authAPIServer, err := authserver.NewAuthServer(
-						address, etcdAddress, path.Join(appEnv.EtcdPrefix, appEnv.AuthEtcdPrefix))
+						address, etcdAddress, path.Join(appEnv.EtcdPrefix, appEnv.AuthEtcdPrefix),
+						true)
 					if err != nil {
 						return err
 					}
@@ -492,7 +494,8 @@ func doFullMode(appEnvObj interface{}) error {
 					ppsclient.RegisterAPIServer(s, ppsAPIServer)
 
 					authAPIServer, err := authserver.NewAuthServer(
-						address, etcdAddress, path.Join(appEnv.EtcdPrefix, appEnv.AuthEtcdPrefix))
+						address, etcdAddress, path.Join(appEnv.EtcdPrefix, appEnv.AuthEtcdPrefix),
+						false)
 					if err != nil {
 						return err
 					}
